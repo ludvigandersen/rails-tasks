@@ -18,6 +18,7 @@ jobs:
     steps:
       - checkout
       - run:
+          command: gem install bundler
           command: bundle update --bundler
       - run:
           name: Which bundler?
