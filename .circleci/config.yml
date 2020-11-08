@@ -19,6 +19,7 @@ jobs:
       - checkout
       - run:
           command: gem install bundler
+      - run:
           command: bundle update --bundler
       - run:
           name: Which bundler?
