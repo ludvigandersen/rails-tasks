@@ -1,0 +1,31 @@
+version: 2.1
+orbs:
+  ruby: circleci/ruby@0.1.2 
+
+jobs:
+  build:
+    docker:
+      - image: circleci/ruby:2.6.0-stretch-node
+        environment:
+          PGHOST: 127.0.0.1
+          PGUSER: circleci
+          RAILS_ENV: test
+      - image: postgres:12.0
+        environment:
+          POSTGRES_DB: phoneloan_test
+          POSTGRES_USER: circleci
+    executor: ruby/default
+    steps:
+      - checkout
+      - run:
+          name: Which bundler?
+          command: bundle -v
+      - ruby/bundle-install
+      
+      - run:
+          name: Database setup
+          command: bundle exec rake db:setup && bundle exec rake db:seed
+      
+      - run:  
+          name: Tests
+          command: bundle exec rspec spec           
