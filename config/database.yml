@@ -6,9 +6,11 @@
 #
 default: &default
   adapter: postgresql
+  encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
   # socket: /tmp/.s.PGSQL.5432
+  port: <%= ENV.fetch('DB_PORT', 5432) %>
 
 development:
   <<: *default
@@ -38,3 +40,4 @@ test:
 production:
   <<: *default
   database: rails_tasks_production
+  username: meewtest
