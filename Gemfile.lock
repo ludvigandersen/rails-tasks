@@ -78,6 +78,8 @@ GEM
       rails (>= 4.2.0, < 6.1)
     diff-lcs (1.4.4)
     erubi (1.9.0)
+    faker (2.15.1)
+      i18n (>= 1.6, < 2)
     ffi (1.13.1)
     ffi (1.13.1-java)
     ffi (1.13.1-x64-mingw32)
@@ -213,6 +215,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   byebug
   devise_token_auth
+  faker
   listen (~> 3.2)
   pg
   puma (~> 4.1)
