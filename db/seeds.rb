@@ -6,11 +6,27 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+# 5.times do
+#     users = User.create({
+#         email: Faker::Internet.name,
+#         password: Faker::Internet.password
+#     })
+# end
 
-users = User.create({
-    email: Faker::Internet.name,
-    password: Faker::Internet.password
-})
+users = User.create ([
+    {
+        email: "son@tec.dk",
+        password: "password"
+    },
+    {
+        email: "don@tec.dk",
+        password: "password"
+    },
+    {
+        email: "kim@tec.dk",
+        password: "password"
+    },
+])
 
 # clients = Client.create([
 #     {
@@ -32,28 +48,6 @@ users = User.create({
 #         phone: "12345678"
 #     }
 # ])
-
-# users = User.create ([
-#     {
-#         email: "son@tec.dk",
-#         password: "password"
-#     },
-#     {
-#         email: "don@tec.dk",
-#         password: "password"
-#     },
-#     {
-#         email: "kim@tec.dk",
-#         password: "password"
-#     },
-# ])
-
-# 5.times do
-#     users = User.create({
-#         email: Faker::Internet.name,
-#         password: Faker::Internet.password
-#     })
-# end
 
 # tasks = Task.create({
 #     title: Faker::Educator.university,
