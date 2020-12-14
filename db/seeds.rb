@@ -26,34 +26,47 @@ users = User.create ([
         email: "kim@tec.dk",
         password: "password"
     },
+    ])
+    
+    
+# clients = Client.create({
+#         name: Faker::Name.name,
+#         phone: Faker::PhoneNumber.phone_number
+#         })
+        
+        
+clients = Client.create([
+    {
+        name: "Soniya Akhter",
+        phone: 12345678
+    },
+    {
+        name: "John El",
+        phone: 12345678
+    },
+    {
+        name: "Kriti Hansen",
+        phone: "12345678"
+    }
 ])
 
-# clients = Client.create([
-#     {
-#         name: "Soniya Akhter",
-#         email: "son@tec.dk",
-#         password: "password",
-#         phone: 12345678
-#     },
-#     {
-#         name: "John El",
-#         email: "don@tec.dk",
-#         password: "password",
-#         phone: 12345678
-#     },
-#     {
-#         name: "Kriti Hansen",
-#         email: "kim@tec.dk",
-#         password: "password",
-#         phone: "12345678"
-#     }
-# ])
+5.times do
+    tasks = Task.create({
+        title: "Programmer",
+        description: "Frontend Devepoler",
+        start_date: "",
+        finished_date: "",
+        client_id: clients.first,
+        user_id: users.first
+    })
+end
 
 # tasks = Task.create({
 #     title: Faker::Educator.university,
 #     description: Faker::Lorem.sentence,
-#     deadline: Faker::Date.between,
 #     start_date: Faker::Date.between_expect,
 #     finished_date: Faker::Date.between_expect,
-#     client_id: clients.first
+#     client_id: clients.first,
+#     user_id: users.first
 # })
+        

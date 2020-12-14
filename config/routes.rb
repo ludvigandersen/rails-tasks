@@ -6,8 +6,16 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :users, only: %i[index show]
-      post 'users/create', to: 'users#create'
+      resources :clients, only: %i[index show create update delete]
+      resources :tasks, only: %i[index show]
     end
   end
+
+  # namespace :api do
+  #   namespace :v1 do
+  #     resources :clients, only: %i[index show]
+  #     resources :tasks, only: %i[index show]
+  #     post 'users/create', to: 'users#create'
+  #   end
+  # end
 end

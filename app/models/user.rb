@@ -7,7 +7,12 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  # devise :database_authenticatable, :registerable,
+  #        :recoverable, :rememberable, :validatable
   include DeviseTokenAuth::Concerns::User
+
+  # has_secure_password
 
   validates :email, presence: true
   validates :password, presence: true
