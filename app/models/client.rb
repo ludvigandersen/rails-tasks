@@ -1,5 +1,6 @@
 class Client < ApplicationRecord
-    has_many :tasks
+    # has_many :tasks
+    include DeviseTokenAuth::Concerns::User
 
    validates :name, presence: true
      

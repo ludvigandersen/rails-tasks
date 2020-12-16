@@ -12,10 +12,14 @@ class User < ActiveRecord::Base
   #        :recoverable, :rememberable, :validatable
   include DeviseTokenAuth::Concerns::User
 
-  # has_secure_password
+  # has_secure_token :confirmation_token
 
   validates :email, presence: true
   validates :password, presence: true
+
+  user = User.new
+  user.save
+  user.confirmation_token
   
   
 end

@@ -50,23 +50,23 @@ clients = Client.create([
     }
 ])
 
+# 5.times do
+#     tasks = Task.create({
+#         title: "Programmer",
+#         description: "Frontend Devepoler",
+#         start_date: "",
+#         finished_date: "",
+#         client_id: clients.first,
+#         user_id: users.first
+#     })
+# end
+
 5.times do
     tasks = Task.create({
-        title: "Programmer",
-        description: "Frontend Devepoler",
-        start_date: "",
-        finished_date: "",
+        title: Faker::Educator.university,
+        description: Faker::Lorem.sentence,
         client_id: clients.first,
         user_id: users.first
-    })
+    }) 
 end
-
-# tasks = Task.create({
-#     title: Faker::Educator.university,
-#     description: Faker::Lorem.sentence,
-#     start_date: Faker::Date.between_expect,
-#     finished_date: Faker::Date.between_expect,
-#     client_id: clients.first,
-#     user_id: users.first
-# })
         

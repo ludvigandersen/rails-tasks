@@ -1,21 +1,21 @@
 
 class Api::V1::TasksController < ApplicationController
 
-    before_action :authenticate_user
+    before_action :authenticate_user!
 
       def index
-        @task = Task.all 
-        render json: {status: 'Success', message:'Loaded task'}, status: :ok 
+        tasks = Task.all 
+        render json: {status: 'Success', message:'Loaded task', data:tasks}, status: :ok 
     end
 
     def show
-        @task = Task.find(params[:id]) 
-        render json: {status: 'Success', message:'Loaded task'}, status: :ok 
+        task = Task.find(params[:id]) 
+        render json: {status: 'Success', message:'Loaded task', data: task}, status: :ok 
     end
     
     def create
-        @task = Task.new(task_params)
-        if @task.save
+        task = Task.new(task_params)
+        if task.save
             render json: @task, status: :created
         else
             # head(:unauthorized)
@@ -25,8 +25,8 @@ class Api::V1::TasksController < ApplicationController
     end
 
     def update
-        @task = Task.find(params[:id])
-        if @task
+        task = Task.find(params[:id])
+        if task
             task.update(task_params)
             render json: {message: "Successfully update."}, status: :created
         else
@@ -36,9 +36,9 @@ class Api::V1::TasksController < ApplicationController
     end
 
     def destroy
-        @task = Task.find(params[:id])
-        if @task
-            @task.destroy(task_params)
+        task = Task.find(params[:id])
+        if task
+            task.destroy(task_params)
             render json: {message: "Successfully deleted."}, status: :created
         else
             render json: {message: "Unable to delete."}, status: 400 

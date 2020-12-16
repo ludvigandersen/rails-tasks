@@ -1,22 +1,22 @@
 
 class Api::V1::ClientsController < ApplicationController 
 
-      before_action :authenticate_user
+    before_action :authenticate_user!
 
       def index
-        @client = Client.all 
-        render json: {status: 'Success', message:'Loaded clients'}, status: :ok 
+        clients = Client.all 
+        render json: {status: 'Success', message:'Loaded clients', data:clients}, status: :ok 
     end
 
     def show
-        @client = Client.find(params[:id]) 
-        render json: {status: 'Success', message:'Loaded client'}, status: :ok 
+        client = Client.find(params[:id]) 
+        render json: {status: 'Success', message:'Loaded client', data:client}, status: :ok 
     end
     
     def create
-        @client = Client.new(client_params)
-        if @client.save
-            render json: @client, status: :created
+        client = Client.new(client_params)
+        if client.save
+            render json: client, status: :created
         else
             # head(:unauthorized)
             render json: {message: "Invalid client."}, status: 400 
@@ -25,8 +25,8 @@ class Api::V1::ClientsController < ApplicationController
     end
 
     def update
-        @client = Client.find(params[:id])
-        if @client
+        client = Client.find(params[:id])
+        if client
             client.update(client_params)
             render json: {message: "Successfully update."}, status: :created
         else
@@ -36,9 +36,9 @@ class Api::V1::ClientsController < ApplicationController
     end
 
     def destroy
-        @client = Client.find(params[:id])
-        if @client
-            @client.destroy(client_params)
+        client = Client.find(params[:id])
+        if client
+            client.destroy(client_params)
             render json: {message: "Successfully deleted."}, status: :created
         else
             render json: {message: "Unable to delete."}, status: 400 
